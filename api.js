@@ -38,9 +38,9 @@ export async function fetchReactionsOfComment(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => resolve(
             id.map((val) => {
-                return val.comments.map((val) => {
-                    return val.reactions;
-                });
+                return val.comments.reduce((aggr, val) => {
+                    return aggr = val.reactions;
+                }, {});
             })
         ), 100);
     });
